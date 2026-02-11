@@ -31,7 +31,10 @@ class _StaffHomeScaffoldState extends State<StaffHomeScaffold> {
         backgroundColor: AppTheme.backgroundDark.withOpacity(0.9),
         elevation: 0,
         actions: [
-          IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
+          IconButton(
+            icon: const Icon(Icons.more_vert), 
+            onPressed: () => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Opciones próximamente'))),
+          ),
         ],
       ),
       body: SingleChildScrollView(

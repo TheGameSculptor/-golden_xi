@@ -303,7 +303,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         alignment: Alignment.centerRight,
                         child: TextButton(
                           onPressed: () {
-                            // Forgot Password logic
+                            Navigator.pushNamed(context, AppRoutes.accessHelp);
                           },
                           child: Text(
                             '¿Contraseña olvidada?',

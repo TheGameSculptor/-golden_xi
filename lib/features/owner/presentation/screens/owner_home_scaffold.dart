@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:golden_xi/core/theme/app_theme.dart';
+import 'package:golden_xi/routes/app_routes.dart';
 
 class OwnerHomeScaffold extends StatefulWidget {
   const OwnerHomeScaffold({super.key});
@@ -95,8 +96,7 @@ class _OwnerHomeScaffoldState extends State<OwnerHomeScaffold> {
             const SizedBox(height: 48),
             ElevatedButton(
               onPressed: () {
-                // Navigate to registration or toggle state for demo
-                setState(() => _hasClub = true);
+                Navigator.pushNamed(context, AppRoutes.createClub);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primaryGold,
@@ -240,9 +240,18 @@ class _OwnerHomeScaffoldState extends State<OwnerHomeScaffold> {
        child: Row(
          mainAxisAlignment: MainAxisAlignment.spaceAround,
          children: [
-           const Icon(Icons.dashboard, color: AppTheme.primaryGold),
-           Icon(Icons.message, color: Colors.grey[700]),
-           Icon(Icons.person, color: Colors.grey[700]),
+           IconButton(
+             icon: const Icon(Icons.dashboard, color: AppTheme.primaryGold), 
+             onPressed: () {}, // Current Screen
+           ),
+           IconButton(
+             icon: Icon(Icons.message, color: Colors.grey[700]),
+             onPressed: () => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Mensajería próximamente'))),
+           ),
+           IconButton(
+             icon: Icon(Icons.person, color: Colors.grey[700]), 
+             onPressed: () => Navigator.pushNamed(context, AppRoutes.ownerProfile),
+           ),
          ],
        ),
      );

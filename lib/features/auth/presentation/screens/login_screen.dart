@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:golden_xi/core/theme/app_theme.dart';
 import 'package:golden_xi/routes/app_routes.dart';
 
@@ -48,6 +50,65 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
   
+  Future<void> _handleGoogleLogin() async {
+    setState(() => _isLoading = true);
+    try {
+      UserCredential? credential;
+      
+      if (kIsWeb) {
+        credential = await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider());
+      } else {
+        // Native Mobile Flow
+        final GoogleSignIn googleSignIn = GoogleSignIn();
+        final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+        
+        if (googleUser != null) {
+          final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+          final AuthCredential cred = GoogleAuthProvider.credential(
+            accessToken: googleAuth.accessToken,
+            idToken: googleAuth.idToken,
+          );
+          credential = await FirebaseAuth.instance.signInWithCredential(cred);
+        }
+      }
+
+      if (credential?.user != null && mounted) {
+        await _checkRoleAndNavigate(credential!.user!);
+      }
+    } catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
+  }
+
+  Future<void> _handleAppleLogin() async {
+    setState(() => _isLoading = true);
+    try {
+      UserCredential? credential;
+      
+      if (kIsWeb) {
+        credential = await FirebaseAuth.instance.signInWithPopup(OAuthProvider('apple.com'));
+      } else {
+        // Native check
+        if (defaultTargetPlatform == TargetPlatform.iOS) {
+          credential = await FirebaseAuth.instance.signInWithProvider(AppleAuthProvider());
+        } else {
+           // Android uses OAuthProvider (Web flow)
+           credential = await FirebaseAuth.instance.signInWithProvider(OAuthProvider('apple.com'));
+        }
+      }
+
+      if (credential?.user != null && mounted) {
+         await _checkRoleAndNavigate(credential!.user!);
+      }
+    } catch (e) {
+       if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+    } finally {
+       if (mounted) setState(() => _isLoading = false);
+    }
+  }
+
   Future<void> _checkRoleAndNavigate(User user) async {
     final doc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
     if (!mounted) return;
@@ -301,19 +362,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Expanded(
                             child: OutlinedButton(
-                              onPressed: () async {
-                                setState(() => _isLoading = true);
-                                try {
-                                  final credential = await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider());
-                                  if (credential.user != null && mounted) {
-                                    await _checkRoleAndNavigate(credential.user!);
-                                  } 
-                                } catch (e) {
-                                  if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
-                                } finally {
-                                  if (mounted) setState(() => _isLoading = false);
-                                }
-                              },
+                              onPressed: _handleGoogleLogin,
                               style: OutlinedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(vertical: 12),
                                 side: BorderSide(color: Colors.grey[800]!),
@@ -334,19 +383,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(width: 16),
                           Expanded(
                             child: OutlinedButton(
-                              onPressed: () async {
-                                setState(() => _isLoading = true);
-                                try {
-                                  final credential = await FirebaseAuth.instance.signInWithPopup(OAuthProvider('apple.com'));
-                                  if (credential.user != null && mounted) {
-                                    await _checkRoleAndNavigate(credential.user!);
-                                  }
-                                } catch (e) {
-                                  if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
-                                } finally {
-                                  if (mounted) setState(() => _isLoading = false);
-                                }
-                              },
+                              onPressed: _handleAppleLogin,
                               style: OutlinedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(vertical: 12),
                                 side: BorderSide(color: Colors.grey[800]!),

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "20865995402",
+    "project_id": "golden-xi-25e9b",
+    "storage_bucket": "golden-xi-25e9b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20865995402:android:9816d16009e8b101409373",
+        "android_client_info": {
+          "package_name": "com.antoniojabang.goldenxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20865995402-j6l23mpt60vesgaojltso7etaj5rj3o7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.antoniojabang.goldenxi",
+            "certificate_hash": "cac42378e888a679c279473060715e3eba20911b"
+          }
+        },
+        {
+          "client_id": "20865995402-mvon0iq6djcob2vpu0tl2nh7od7ce4rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk1zoO92tRgSdCot1F8hxJHax-a0iXBZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20865995402-mvon0iq6djcob2vpu0tl2nh7od7ce4rn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "20865995402-otf4bgk5jhgv5p5pj4996mtio1odcvuf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.antoniojabang.goldenxi"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

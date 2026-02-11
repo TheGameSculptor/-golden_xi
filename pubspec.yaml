@@ -40,6 +40,8 @@ dependencies:
   firebase_analytics: ^11.3.5
   google_fonts: ^8.0.1
   shorebird_code_push: ^2.0.5
+  google_sign_in: ^7.2.0
+  sign_in_with_apple: ^7.0.1
 
 dev_dependencies:
   flutter_test:

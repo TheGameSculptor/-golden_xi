@@ -8,6 +8,7 @@ import '../features/staff/presentation/screens/staff_home_scaffold.dart';
 import '../features/staff/presentation/screens/staff_technical_dashboard.dart';
 import '../features/owner/presentation/screens/owner_home_scaffold.dart';
 import '../features/owner/presentation/screens/owner_profile_screen.dart';
+import '../features/owner/presentation/screens/create_club_view.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -22,6 +23,7 @@ class AppRoutes {
   
   static const String ownerHome = '/owner_home';
   static const String ownerProfile = '/owner_profile';
+  static const String createClub = '/create_club';
 
   static Map<String, WidgetBuilder> get routes => {
         splash: (context) => const SplashScreen(),
@@ -36,5 +38,6 @@ class AppRoutes {
         
         ownerHome: (context) => const OwnerHomeScaffold(),
         ownerProfile: (context) => const OwnerProfileScreen(),
+        createClub: (context) => const Scaffold(body: CreateClubView()), // Wrapped in Scaffold usually or if View handles it
       };
 }

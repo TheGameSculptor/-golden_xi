@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:google_sign_in/google_sign_in.dart' as gsi;
 import 'package:golden_xi/core/theme/app_theme.dart';
 import 'package:golden_xi/routes/app_routes.dart';
 
@@ -59,11 +59,11 @@ class _LoginScreenState extends State<LoginScreen> {
         credential = await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider());
       } else {
         // Native Mobile Flow
-        final GoogleSignIn googleSignIn = GoogleSignIn();
-        final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+        final gsi.GoogleSignIn googleSignIn = gsi.GoogleSignIn();
+        final gsi.GoogleSignInAccount? googleUser = await googleSignIn.signIn();
         
         if (googleUser != null) {
-          final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+          final gsi.GoogleSignInAuthentication googleAuth = await googleUser.authentication;
           final AuthCredential cred = GoogleAuthProvider.credential(
             accessToken: googleAuth.accessToken,
             idToken: googleAuth.idToken,

@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  static bool _isGoogleSignInInitialized = false;
 
   Future<void> _handleLogin() async {
     setState(() => _isLoading = true);
@@ -58,18 +59,23 @@ class _LoginScreenState extends State<LoginScreen> {
       if (kIsWeb) {
         credential = await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider());
       } else {
-        // Native Mobile Flow
-        final gsi.GoogleSignIn googleSignIn = gsi.GoogleSignIn();
-        final gsi.GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-        
-        if (googleUser != null) {
-          final gsi.GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-          final AuthCredential cred = GoogleAuthProvider.credential(
-            accessToken: googleAuth.accessToken,
-            idToken: googleAuth.idToken,
-          );
-          credential = await FirebaseAuth.instance.signInWithCredential(cred);
+        // Native Mobile Flow (Google Sign In v7+)
+        if (!_isGoogleSignInInitialized) {
+          await gsi.GoogleSignIn.instance.initialize();
+          _isGoogleSignInInitialized = true;
         }
+
+        final gsi.GoogleSignInAccount googleUser = await gsi.GoogleSignIn.instance.authenticate();
+        final gsi.GoogleSignInAuthentication googleAuth = googleUser.authentication;
+        
+        // Note: access token is no longer provided in v7 authentication info.
+        // Firebase often only requires idToken for OpenID Connect identity.
+        final AuthCredential cred = GoogleAuthProvider.credential(
+          idToken: googleAuth.idToken,
+          accessToken: null, 
+        );
+        
+        credential = await FirebaseAuth.instance.signInWithCredential(cred);
       }
 
       if (credential?.user != null && mounted) {

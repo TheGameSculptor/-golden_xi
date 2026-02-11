@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ecb913",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#0a0a0a",
+                        "card-dark": "#161616",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior-y: contain;
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus {
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display text-slate-100 min-h-screen flex justify-center">
+<div class="w-full max-w-[430px] min-h-screen flex flex-col relative bg-background-dark shadow-2xl overflow-hidden border-x border-white/5">
+<div class="h-12 w-full flex justify-between items-end px-8 pb-2">
+<span class="text-xs font-semibold">9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[14px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[14px]">wifi</span>
+<span class="material-icons-round text-[18px]">battery_full</span>
+</div>
+</div>
+<header class="px-6 py-4 flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+</div>
+<span class="text-[10px] tracking-widest font-bold text-primary uppercase">Golden XI Owner</span>
+</div>
+<h1 class="text-2xl font-bold tracking-tight uppercase text-white">Invitar al Staff</h1>
+<p class="text-[11px] text-slate-400">Gestiona los roles técnicos de tu organización deportiva.</p>
+</header>
+<main class="flex-1 px-6 pb-28 overflow-y-auto">
+<section class="mt-4 p-5 rounded-2xl bg-card-dark border border-white/5 shadow-2xl">
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-primary/70 ml-1">Correo Electrónico del Staff</label>
+<div class="relative">
+<span class="material-icons-round absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-lg">alternate_email</span>
+<input class="w-full bg-black border-white/10 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl py-4 pl-12 pr-4 text-sm transition-all outline-none text-white placeholder-slate-600" placeholder="staff@goldenxi.com" type="email"/>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[10px] font-bold uppercase tracking-widest text-primary/70 ml-1">Seleccionar Sub-rol</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex flex-col items-center justify-center gap-2 py-4 rounded-xl border-2 border-primary bg-primary/10 text-primary transition-all shadow-[0_0_15px_rgba(236,185,19,0.1)]">
+<span class="material-symbols-outlined text-2xl">sports</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Entrenador</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 py-4 rounded-xl border border-white/10 bg-black/40 hover:bg-white/5 text-slate-400 transition-all">
+<span class="material-symbols-outlined text-2xl">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Analista</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 py-4 rounded-xl border border-white/10 bg-black/40 hover:bg-white/5 text-slate-400 transition-all">
+<span class="material-symbols-outlined text-2xl">medical_services</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Fisio</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 py-4 rounded-xl border border-white/10 bg-black/40 hover:bg-white/5 text-slate-400 transition-all">
+<span class="material-symbols-outlined text-2xl">assignment_ind</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Delegado</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-black font-extrabold py-4 rounded-xl flex items-center justify-center gap-2 shadow-xl shadow-primary/10 transition-transform active:scale-[0.97] mt-2">
+<span class="text-xs uppercase tracking-[0.2em]">Enviar Invitación</span>
+<span class="material-symbols-outlined font-bold">send</span>
+</button>
+</div>
+</section>
+<section class="mt-8">
+<div class="flex justify-between items-center mb-4 px-1">
+<h2 class="text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-2 text-white">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_#ecb913]"></span>
+                        Invitaciones Pendientes
+                    </h2>
+<span class="text-[9px] bg-primary/20 text-primary px-2.5 py-1 rounded-full font-bold border border-primary/20">3 TOTAL</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 rounded-xl bg-card-dark border border-white/5 group hover:border-primary/30 transition-colors">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-slate-100">marcos.entrenador@club.com</span>
+<div class="flex items-center gap-2">
+<div class="px-2 py-0.5 rounded bg-primary/10 border border-primary/20">
+<span class="text-[9px] text-primary font-bold uppercase tracking-widest">Entrenador</span>
+</div>
+<span class="text-[10px] text-slate-500 font-medium">Enviada hace 2h</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1.5">
+<span class="text-[9px] font-bold text-primary/90 uppercase tracking-tighter bg-primary/5 px-2 py-0.5 rounded">Esperando respuesta</span>
+<button class="text-slate-600 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">do_not_disturb_on</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl bg-card-dark border border-white/5 group hover:border-primary/30 transition-colors">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-slate-100">laura.physio@golden.es</span>
+<div class="flex items-center gap-2">
+<div class="px-2 py-0.5 rounded bg-primary/10 border border-primary/20">
+<span class="text-[9px] text-primary font-bold uppercase tracking-widest">Fisio</span>
+</div>
+<span class="text-[10px] text-slate-500 font-medium">Ayer</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1.5">
+<span class="text-[9px] font-bold text-primary/90 uppercase tracking-tighter bg-primary/5 px-2 py-0.5 rounded">Esperando respuesta</span>
+<button class="text-slate-600 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">do_not_disturb_on</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl bg-card-dark border border-white/5 group hover:border-primary/30 transition-colors">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-slate-100">pablo.data@scout.pro</span>
+<div class="flex items-center gap-2">
+<div class="px-2 py-0.5 rounded bg-primary/10 border border-primary/20">
+<span class="text-[9px] text-primary font-bold uppercase tracking-widest">Analista</span>
+</div>
+<span class="text-[10px] text-slate-500 font-medium">Hace 3 días</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1.5">
+<span class="text-[9px] font-bold text-primary/90 uppercase tracking-tighter bg-primary/5 px-2 py-0.5 rounded">Esperando respuesta</span>
+<button class="text-slate-600 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">do_not_disturb_on</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="absolute bottom-0 w-full h-20 bg-black/80 ios-blur border-t border-white/10 px-8 flex justify-between items-center pb-6">
+<div class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined text-[24px]">shield</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Club</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[24px] fill-1">badge</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Staff</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined text-[24px]">groups</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Equipo</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Ajustes</span>
+</div>
+</nav>
+<div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-white/20 rounded-full"></div>
+</div>
+
+</body></html>

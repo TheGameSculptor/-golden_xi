@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Panel de Control del Dueño - Golden XI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4af37",
+                        "background-dark": "#0F0F0F",
+                        "card-dark": "#1A1A1A",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #d4af37;
+            --background: #0F0F0F;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+            background-color: var(--background);
+            color: white;
+        }
+        .gold-gradient-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(15, 15, 15, 0.85);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display antialiased">
+<div class="fixed top-0 left-0 w-full h-11 flex justify-between items-center px-8 z-[100] bg-background-dark">
+<span class="text-[14px] font-semibold">9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[16px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[16px]">wifi</span>
+<span class="material-icons-round text-[16px]">battery_full</span>
+</div>
+</div>
+<main class="pt-14 pb-32 px-5 min-h-screen overflow-y-auto">
+<header class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg p-[1px] bg-primary">
+<div class="w-full h-full bg-background-dark rounded-lg flex items-center justify-center p-1">
+<img alt="Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNQjoOv4kHeCM5ybltgmRao9xIkrAGfXPN5HtQfk-y4o9vzwu83LdPeRzwozJcTr0ljcMteXyHy4ZM5quKVrGL6UTVkPtaRYNQcRhfD6TaA_zkIq7R9dXsD6-2OXgIWDa1uIBIUCKIV434olur9kNfpRZt2DB0bGlMApXk5ph9iJv1PtBMoEpEes0J0hi7mEdoP76c-7moIKy0iqK04iUMTTXh5igEhTRtIzcxeBqoGYFFtXSADwvWOX5xIQmOnkhZyEZCxkr_lA"/>
+</div>
+</div>
+<div>
+<h1 class="text-xs text-primary font-bold uppercase tracking-widest leading-none mb-1">Golden XI</h1>
+<p class="text-lg font-extrabold tracking-tight">Real Galácticos FC</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-white">notifications</span>
+</button>
+</header>
+<section class="mb-8">
+<h2 class="text-sm font-bold uppercase tracking-widest text-primary/80 mb-4 ml-1">Resumen del Club</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="gold-gradient-card p-4 rounded-2xl col-span-1">
+<p class="text-xs text-white/60 mb-1">Equipos</p>
+<p class="text-3xl font-extrabold text-primary">08</p>
+</div>
+<div class="gold-gradient-card p-4 rounded-2xl col-span-1">
+<p class="text-xs text-white/60 mb-1">Miembros</p>
+<p class="text-3xl font-extrabold text-primary">142</p>
+</div>
+<div class="gold-gradient-card p-4 rounded-2xl col-span-2 flex justify-between items-center">
+<div>
+<p class="text-xs text-white/60 mb-1 uppercase tracking-tight">Próximo Partido</p>
+<p class="text-sm font-bold italic">VS INTER MADRID</p>
+<p class="text-[10px] text-white/40 mt-1">Hoy, 21:00h • Estadio Municipal</p>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl">sports_soccer</span>
+</div>
+</div>
+</section>
+<section class="mb-8">
+<div class="flex justify-between items-end mb-4 ml-1">
+<h2 class="text-sm font-bold uppercase tracking-widest text-primary/80 leading-none">Equipos Activos</h2>
+<span class="text-[10px] text-white/40 uppercase font-bold">Ver todos</span>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar py-2">
+<div class="flex flex-col items-center gap-2 min-w-[70px]">
+<div class="w-16 h-16 rounded-full border-2 border-primary p-0.5">
+<div class="w-full h-full rounded-full bg-white/10 flex items-center justify-center text-xs font-bold uppercase overflow-hidden">
+<img alt="U19" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLrugzxDFdyE7476wxsrtGh8_5C66uh3jW79LKxYba039yKNdBWbrrytggzgSwSy5E8MMwV2FGEiwKUkOojTzU29HL1_Q9GlIYqrKvhc5W4o-7reswTrxEh5fnx5jq7M7iQEZuz1ZaUO6Muq-j6jQ_fXVfm7mRrZIDWgpC7qzlT-H1ihbAi1EXl2yfBtRU9dueGHz9wT31BcGMZiLSxgha0VCdcjSzSB48UxsmS5ByJr8L4RpvWx4_PCPLI0z5KI3cJp3j46qasg"/>
+</div>
+</div>
+<span class="text-[10px] font-bold text-center">U19 A</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[70px]">
+<div class="w-16 h-16 rounded-full border-2 border-primary/20 p-0.5">
+<div class="w-full h-full rounded-full bg-white/10 flex items-center justify-center text-xs font-bold uppercase overflow-hidden">
+<img alt="SEN" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnImGgGjgyDwLLQCgDSwHvwL5xo2QHi93yHr8uHRjhBqEr1PzHbhPO4SHVHjiC-6hyWnYzE6wTPXe6JjwumimNu4Pu35IIM--4O0o1MdqMOwF-bfB2qCk45IgwPW6k1l41velyeIunx7nSYRPwGUxmFN8iphO6Vsf6uoQoimibSsi1kiTBSMXje4tQAu67LiKA2xK-CIIhovxC1bGnvbHAS8zuJ6i3bZyujx9N2UHJBJbe0WGhuGCBHZP4y3teVTf9P2qM_IV_cA"/>
+</div>
+</div>
+<span class="text-[10px] font-bold text-center text-white/60">SÉNIOR</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[70px]">
+<div class="w-16 h-16 rounded-full border-2 border-primary/20 p-0.5">
+<div class="w-full h-full rounded-full bg-white/10 flex items-center justify-center text-xs font-bold uppercase overflow-hidden">
+<img alt="F11" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlR4K9qPW_M0u7jFXNmAu6jIaYUB9DQ85mrb1tebDsGFiQwCO88g4AvWaEu_DFaxp_Uiq5HYipv2HBQaEZ81Iwp-udyFXLOWMDGLpKCXXIVmU_zh_6ONL5ItYq60V9T_wWEYZOea_AF1e9WmGXZlT_4pjdgIQ2u_ManPS9ONyJqEbj4eyRNgkzMTTkQaVRT_0Hr1aL2kMnem-ovXqD-RNogvSU0e-W3ajz84ZcP7nJT_wwkjUB67cJ2cfDGZU2q0NxS_S8kDx4LQ"/>
+</div>
+</div>
+<span class="text-[10px] font-bold text-center text-white/60">FEM A</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[70px]">
+<div class="w-16 h-16 rounded-full border-2 border-primary/20 p-0.5">
+<div class="w-full h-full rounded-full bg-white/10 flex items-center justify-center text-xs font-bold uppercase overflow-hidden">
+<img alt="BEN" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8NS_PFZ8zJ39_O_w5JdK5oA_GcqC8kIfa6Th3r3irGg6omLRZKPuCtVLSgt9uXqRIbBOW0pnu2SClA54bAGajUlwex5tmXyOxtkIYn8tVT6EwlfggzCF8OBCB_MosNJn_9OxG28D7IlTRnJzNRET6VASUprZS5mDVzfSTA1BlrktYw_Mk5GBgE6k7xaM9wWuUCJKZdh_ZBKgKnL-ux2G1dJtB0ZKHLS4UFn-WFeQmjKTZvOLXz_1P1CLxamR1iNiw98JebzPLUg"/>
+</div>
+</div>
+<span class="text-[10px] font-bold text-center text-white/60">BENJAMÍN</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-2 min-w-[70px]">
+<div class="w-16 h-16 rounded-full border-2 border-dashed border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white/20">add</span>
+</div>
+<span class="text-[10px] font-bold text-center text-white/20">NUEVO</span>
+</div>
+</div>
+</section>
+<section class="mb-4">
+<div class="bg-card-dark rounded-2xl p-5 border border-white/5 relative overflow-hidden shadow-2xl">
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-[40px]"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Tu Suscripción</h2>
+<p class="text-2xl font-black italic uppercase">Plan Oro</p>
+</div>
+<span class="bg-primary/20 text-primary text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-primary/30">Activo</span>
+</div>
+<div class="flex items-center justify-between relative z-10">
+<p class="text-xs text-white/40 max-w-[150px]">Acceso total a gestión avanzada y métricas Pro.</p>
+<button class="bg-primary text-black text-[10px] font-bold px-4 py-2.5 rounded-xl uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all">
+                        Gestionar
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full nav-blur border-t border-white/5 pb-8 pt-3 px-6 flex justify-between items-center z-50">
+<div class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-[26px]">emoji_events</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Torneos</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-[26px]">group</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Social</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[26px] fill-current" style="font-variation-settings: 'FILL' 1">shield</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Mi Club</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-[26px]">account_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Perfil</span>
+</div>
+</nav>
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-white/20 rounded-full z-[100]"></div>
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+<div class="absolute top-[10%] -left-[10%] w-[50%] h-[30%] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[20%] -right-[10%] w-[60%] h-[40%] bg-primary/5 blur-[100px] rounded-full"></div>
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02]"></div>
+</div>
+
+</body></html>

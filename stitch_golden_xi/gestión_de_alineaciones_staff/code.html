@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4af35",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#201d12",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .pitch-container {
+            background: linear-gradient(180deg, #2a2618 0%, #201d12 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .pitch-line {
+            border: 1px solid rgba(212, 175, 53, 0.15);
+        }
+        .player-node-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 53, 0.3);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display">
+<!-- Header Navigation -->
+<header class="px-6 pt-12 pb-4 flex items-center justify-between sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Golden XI Staff</span>
+<h1 class="text-xl font-bold">Gestión de Alineación</h1>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons-round">more_vert</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col pb-32">
+<!-- Tactical Pitch Area -->
+<section class="px-4 mt-2">
+<div class="relative w-full aspect-[3/4] rounded-xl pitch-container border border-primary/20 p-4 shadow-2xl">
+<!-- Pitch Markings -->
+<div class="absolute inset-4 border-2 border-primary/10 rounded-lg pointer-events-none">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-20 border-b-2 border-x-2 border-primary/10"></div>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/4 h-8 border-b-2 border-x-2 border-primary/10"></div>
+<div class="absolute top-1/2 left-0 w-full h-px bg-primary/10"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full border-2 border-primary/10"></div>
+</div>
+<!-- 4-3-3 Formation Visualization -->
+<div class="relative h-full w-full grid grid-rows-5 gap-2">
+<!-- Forward Line -->
+<div class="flex justify-around items-center pt-4">
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark player-node-glow p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de delantero izquierdo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjeRgEebBxXwIvpy08L6qN-1Ta-Zze6_bHKnIeJm2maL2lL4hyVnFT2vr8eDM9cIyXMYVmfaBysFvJhOKf41pyc316h91xkMkVv_YHIJz3jON3PNVG-SFlQM-5DvMpOVdjFEfEAtA-OI_yffWPrQTUccKtKiQ1SZEYZwD7uznYjd92XvI62YH_8hCT0rCupot5jwA6Qqt5Tq5lwWEWIwC6hiv66HtEoVvX-e6zN56m4jUWgBqfn_mPs2q72FgSBZLPWQpnK-RZ4w"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">11</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Vinícius</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark player-node-glow p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de delantero centro" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADF2bonD65Wr3Vk05weXW6nB4tGDEjC_sXJ0U1sDQfBIX83PqsiI2zPxdl_KUZyCFiWQBH16SkdEycOlxH4FDmflUCy4QMJC5SBs6438Ee3FXX7SqPfURUrWn6iYbEBVqz68g3iQMUIzZvpZ8fOe3rduJ41uEuqMpCIwjIFI-XaRCkNz1YEO-fblGsz-eG5c7DPNbskhcYcr49fZ5GyaKBMeEb8lY54KJlHCD5bgW_-KyoN4KDYc7ehccvfca-NGTuDbmcqkI_Sg"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">9</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Mbappé</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark player-node-glow p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de delantero derecho" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGqWipQfFeHH5b8JTjAkl666wxlrjyBCiELqJMFfWcL4h1gjtDYv_2lu8SYu6-L1U15Wf8Z8TE8d3pKa5kbQ1pJuB0kHrYMx8TWiJl9oLN6frHLVVDOUpGX-5NRNvGGh07meVMP1OS8Y-RcG0nZwmRWqqyNEDAsbmdxNADpn4q39mqjqGisDZzjmQvl0HkT3zcmh2t7bIxFPapIMItT6QPX7RDcJ9mUl6gZbHnxgaqBbFx4yr2dMYYEOjMuBH-uPEZmKSu-5TieA"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">7</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Rodrygo</span>
+</div>
+</div>
+<!-- Midfield Line -->
+<div class="flex justify-around items-center">
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark player-node-glow p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de centrocampista" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpz-M1LARZSoJ3SIKC6j0O6S8d7IOkRvnBL5A8dedE5Scgea-NoFZEC4UKR4AIMlgPLzJgrYOqnjajEt6R0T03zzF_Obqt51xwB9L60Gf4aKEd06vVOMQSDTk926dkcvZsphxxqvnicVPrRGURlzGOlVjV6oDseHq-uwoleBYDjz0ht23zaWbuZxAK3kxfjDhbp5xEdf4xDywKYAnlMh0Z4te2dLEgAJZEzS00Rcal0I9Jb4p5bMH3d3fyghzvr1jyJojY-1a99g"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">5</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Bellingham</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark player-node-glow p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de centrocampista" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuOuO9gkxKuY2MyABr0_mwxIxOKuRsmrmxPbeyZ-xZxmBPZOfwmWknHtprio4_PHxYrp28rSOqyIYtLVb9zEyyN1g5jDudc6Mn5t5nXF-fXHVKzDYtIx1i940xWdC_Z2O8-uRBLXq-LMtDv468f22-8mv6ixmsH0aC-9TmHofbf8psAzYh0HioRhZISwgDViguBs1oUSE9shjJNRhFONZc3GcA9AaSOzbDe9XXPaKZO92pJ4RSPI0j8rymnxXK_TtXMj-EyJylUw"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">8</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Valverde</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark player-node-glow p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de centrocampista" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALV9tCIqgSEgZKv5WGfxyhE1mOmkWAaHMm2r_V1LjcplZECY7aNu28FQZ1pVrOy7HO7fVkZ112UjSx9kxV6nD2Mj-Xc8Jh6bH4GRmpXFVxoa5Tyh0Hf0KIdBpPXSL7nOOCcOrMDMXTeYfSQ-XNdFLv5_XLWGyXKzxKKCnTxx6zFmQ1ctIM767VqNCzIHZSOP2Znq-rVQdSqyMBu5mbov5JSzI5g901sGzCX7216Rm_sgLJTCiSSOCLdHTouIHRLIDIohhjWS1UeA"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">14</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Tchouaméni</span>
+</div>
+</div>
+<!-- Defense Line -->
+<div class="flex justify-around items-center">
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de lateral izquierdo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl9E9s7jVj_Tpg6naZuYkFChw-U5iGHdOq-xWzZy1sxrLOAH_AJ_ZZNnHPPzNX_lgK_zJ9DW4jrTFWEACg_QjemlAFhD6lH7_KA7d6qSA4uVIbFBEdUuYtX6my_Q4JwZu8S0hPSgexEck0BoR-jBjK43r8erEvrZ72GMHrcz0hMUdsrViDZquiyY_icOlLuB6RIC4qWmljA67uvJjYHQLzqqRyWlMmb-H4iAXmf5n3CPtmLyPuU0ICEy4jF7mp8q7zyGtwLRxOqQ"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">23</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Mendy</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de central" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2_DO3hHH_h7uBG07OS0vVjDG9a3y9WrTDj-g77hOCZKUC1kJNocUcfxnPYwNdh7z4J7aeL02YpUSEv4NqK-ROl_UH_N9REUw9xjTODOPBcgtSHYUdxFn2GvG1Vof59zHYLyPCflJUam_tOJh3kyYgYc8S66ZYiicb-xNGXtExpTDQXNorlDjqCuJEa5_oO6_9yrqCcLRNqv15Z23fjUn_K3Cmmxk5DT13acU8tRvhsbrJhOQjKJL2wurDKZqjX2W2BJiturxSJA"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">22</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Rüdiger</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de central" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADf23gDpQ3ja-xU_uk6ZpgZsadNasByDUkk26kz6aDWvxSJEWzsaj6SlqxBPeRPmCZbEdUzHNpHACfr0zuQ3z8Laq9hn2czbj-QEulXfRa9qNz8zXklcjW7_ObHP-RKLTh9AqyNw2ktLJP6rdAVsPCF4RjclFXsXm1hYXu-M-t6Z3DeO_fkzABxPBgTieyi1bbtGVLxE4RDNAlEswdpv5qDqZANz_S6y5KoNBVrD0BfU1ezqTEz6qDcUQkKrCz9RV_RCNnxh58KA"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">3</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Militão</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de lateral derecho" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx9ylVbTABdgZKd3PkW-csKC9JvF7amgMvWUgm8lec9ZJY0r6LO6Mt46Dl3h85goCnzDAjkCJb7npWrvRsqqVJ3F8iQYX987Bg39p4Roo3eZViJSg5gyTK_6LaUYx1GGSm0HZgHT_u4w6YQUvWL-Ch1l5wdt9Zda2qhj2MQ7HGhXrRKYKJ1OU8QEh5LV0lkuqrPVBA6qUPIg3-TKwXCqxPet2V3GEYUicWtd8gcoAEci32THcLLxMQVMQz16sRt9bG2xhU1biK_w"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">2</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Carvajal</span>
+</div>
+</div>
+<!-- Goalkeeper -->
+<div class="flex justify-center items-end pb-4">
+<div class="flex flex-col items-center gap-1">
+<div class="relative w-14 h-14 rounded-full border-2 border-primary bg-background-dark p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Foto de perfil de portero" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEdTG7rcx1SWPOOhoyOWpf93H-ru4mZsi_9a_gn6NgdVkyOpvSEZ8WdbIWJ8pK9KdLdxqTYnG6ovYuAj0IMAZlzFw5x4LA4mc6TeZVJ7UFhYq6Yq18gc9EeElXhvKdJcp_SxIi5Iou6BFTvE0ECk8UsxLRybcwKhYJK7x1cwxd8rbQJyKOSJoRbuN7d6Eh7S7jM_c_1Bu6Vqpe3B4FVMWX7yGvpQSDSn-cTqRXvqswGpo7l5trbthtDM9RxKnBivrYCGyeWHqYrA"/>
+<span class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background-dark">1</span>
+</div>
+<span class="text-[10px] font-medium bg-background-dark/80 px-2 py-0.5 rounded shadow">Courtois</span>
+</div>
+</div>
+</div>
+<!-- Floating Change Formation -->
+<button class="absolute bottom-6 right-6 bg-primary text-background-dark px-4 py-2 rounded-full font-bold text-xs flex items-center gap-2 shadow-lg active:scale-95 transition-transform">
+<span class="material-icons-round text-base">grid_view</span>
+                    4-3-3
+                </button>
+</div>
+</section>
+<!-- Subs Section -->
+<section class="mt-8 px-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold">Jugadores Suplentes</h2>
+<span class="text-xs text-primary bg-primary/10 px-2 py-1 rounded">7 Disponibles</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Sub Card 1 -->
+<div class="bg-primary/5 border border-primary/20 p-3 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-background-dark border border-primary/40 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Jugador suplente 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY6m5qIBFUE72odOmaR14iuFFnDTy6zXSKyQUQVgrJVrBGYmT8cxVZX0GXDuLtwvNllL8ZFeFEo8V47CLgAGyLEDCefoAchPNocp-gli0WGaXQf3EvYiLJaCTu61PFMxEi8_YXZ-y66kl85t27UbRbJ_Fk6ng0d6V67EgbeYJWPjVZPrNZzbAtwsnjFPW3vU0zBPR0Qkv57EMocs49yXMqMCggBZgrC1pZJYb6QzwAa1bvqp53ih6ohhlfzG3xMPQntVLwG9LnwQ"/>
+</div>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">Luka Modric</h3>
+<p class="text-[10px] text-primary/80">MC • Media: 87</p>
+</div>
+<span class="material-icons-round text-primary/40">drag_indicator</span>
+</div>
+<!-- Sub Card 2 -->
+<div class="bg-primary/5 border border-primary/20 p-3 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-background-dark border border-primary/40 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Jugador suplente 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFBXA6Y6C27UYHkuw9Az8nS3mn-GsszSyksKXRyVY3LWGnAGSu_M0vTy8bAzAvOHgqywRWvLodhSXXEuHyHMPAXJcVyTe6Z5xNlbEdCtiEkm2Qd-7rJatG5nis0OB0-kArf0-VrUX8QTp37PD5HdNrBsyoUYJy0y71EbB9ux2p8VzWyKqo8g6Cw_tpIw5rclYo0AvlRtmga_BUbFP396kBDegtS7j1p9fidfRWPmX4aubvAnNfQyhDOqXAh3mrdcDvY0NF81K9bg"/>
+</div>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">Brahim Díaz</h3>
+<p class="text-[10px] text-primary/80">ED • Media: 82</p>
+</div>
+<span class="material-icons-round text-primary/40">drag_indicator</span>
+</div>
+<!-- Sub Card 3 -->
+<div class="bg-primary/5 border border-primary/20 p-3 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-background-dark border border-primary/40 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Jugador suplente 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnb7ioPGhX9l2DOA57z3rlRqaCJs28laB9-zX8NN967G4voC5l4fumZDbqEv_93XF67mdOz62BLl8-ZLvJ_NNlq6VnOtSm_2paulSrIirWCIiub32EOtxM1hKtWE1YkwlbBkT499AZOFCHACpkR7P6EwrzhDHakQlbdjSex5DKjDInHj3RJLcGWleWx1C0CHcBVYD3cRs8zBwU5kf9TRCMrNzqSsFfYmZA9W3NL1qpKIpsN67c-ByRl2H8vfB1V-6dZyBfTAG-uw"/>
+</div>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">Arda Güler</h3>
+<p class="text-[10px] text-primary/80">MCO • Media: 79</p>
+</div>
+<span class="material-icons-round text-primary/40">drag_indicator</span>
+</div>
+<!-- Sub Card 4 -->
+<div class="bg-primary/5 border border-primary/20 p-3 rounded-xl flex items-center gap-4 opacity-75">
+<div class="w-10 h-10 rounded-full bg-background-dark border border-primary/40 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Jugador suplente 4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7T3M7hXR6RgsuMCdu5tBMGpY19qRPgYA3vSewbxxR7sERmys2bqSFTCRFCHOMTdU5y0PTwY9wDqC2k-2pB0a1B9gjgHvdmo70I5flIQhTyHOaLb3DsoKHLN-RwGGkogfAo0v3oNAu7ABwiFE4CSDb5arUFjtdKBrBUtJiDJNEGV2f0E3_bNnEATKSMVqJWaacx62UR7LUctH4uGOKixcHChnesdyafYxmuteqN2hVVe2C7oASZ4qy3k4QO9QwA95vX3mNR7tfJg"/>
+</div>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">Endrick</h3>
+<p class="text-[10px] text-primary/80">DC • Media: 77</p>
+</div>
+<span class="material-icons-round text-primary/40">drag_indicator</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Actions -->
+<footer class="fixed bottom-0 left-0 right-0 p-6 bg-background-light dark:bg-background-dark border-t border-primary/10">
+<div class="flex gap-4">
+<button class="flex-1 bg-primary text-background-dark font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(212,175,53,0.3)] active:scale-[0.98] transition-all">
+                Guardar Alineación
+            </button>
+<button class="w-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+<span class="material-icons-round">history</span>
+</button>
+</div>
+</footer>
+<!-- Tab Bar Simulation (iOS Style) -->
+<nav class="fixed bottom-0 left-0 right-0 h-2 bg-primary/20 blur-xl pointer-events-none opacity-50"></nav>
+</body></html>

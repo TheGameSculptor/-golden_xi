@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Invitación Recibida - Golden XI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4af35",
+                        "background-dark": "#0F0F0F",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #d4af35;
+            --background: #0F0F0F;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior-y: contain;
+            background-color: var(--background);
+        }
+        .gold-glow {
+            box-shadow: 0 0 30px rgba(212, 175, 53, 0.2);
+        }
+        .gold-border-gradient {
+            background: linear-gradient(180deg, #d4af35 0%, rgba(212, 175, 53, 0.2) 100%);
+        }
+        .bg-radial-gold {
+            background: radial-gradient(circle at top, rgba(212, 175, 53, 0.12) 0%, rgba(15, 15, 15, 0) 70%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display text-white antialiased overflow-hidden">
+<div class="relative min-h-[100dvh] flex flex-col items-center justify-between px-8 py-10 bg-radial-gold">
+<div class="w-full flex justify-between items-center px-6 fixed top-0 left-0 pt-3 opacity-60 z-50">
+<span class="text-xs font-semibold">9:41</span>
+<div class="flex gap-1.5">
+<span class="material-icons-round text-[14px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[14px]">wifi</span>
+<span class="material-icons-round text-[14px]">battery_full</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center w-full max-w-sm text-center mt-8">
+<div class="mb-10">
+<p class="text-primary tracking-[0.3em] font-bold text-sm mb-2 uppercase opacity-90">Golden XI Exclusive</p>
+<h1 class="text-4xl font-extrabold tracking-tighter italic uppercase leading-tight">
+                    ¡HAS SIDO <span class="text-primary">INVITADO</span>!
+                </h1>
+</div>
+<div class="relative mb-10">
+<div class="p-[2px] rounded-full gold-border-gradient gold-glow">
+<div class="bg-background-dark rounded-full p-8 flex items-center justify-center overflow-hidden w-48 h-48 border border-white/5">
+<img alt="Escudo del Club" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNQjoOv4kHeCM5ybltgmRao9xIkrAGfXPN5HtQfk-y4o9vzwu83LdPeRzwozJcTr0ljcMteXyHy4ZM5quKVrGL6UTVkPtaRYNQcRhfD6TaA_zkIq7R9dXsD6-2OXgIWDa1uIBIUCKIV434olur9kNfpRZt2DB0bGlMApXk5ph9iJv1PtBMoEpEes0J0hi7mEdoP76c-7moIKy0iqK04iUMTTXh5igEhTRtIzcxeBqoGYFFtXSADwvWOX5xIQmOnkhZyEZCxkr_lA"/>
+</div>
+</div>
+<div class="absolute -bottom-2 right-4 bg-primary text-black rounded-full px-3 py-1 text-[10px] font-black tracking-widest uppercase shadow-lg">
+                    Official
+                </div>
+</div>
+<div class="space-y-4 px-2">
+<p class="text-xl font-light leading-relaxed">
+<span class="text-white font-bold block text-2xl mb-1">Real Galácticos FC</span>
+                    te ha invitado a formar parte de su equipo como 
+                    <span class="text-primary font-bold">Jugador Estrella</span>.
+                </p>
+</div>
+</div>
+<div class="w-full max-w-sm space-y-4 mb-6">
+<button class="w-full py-5 px-6 bg-primary hover:brightness-110 active:scale-[0.98] text-background-dark font-black rounded-2xl transition-all shadow-[0_10px_25px_-5px_rgba(212,175,53,0.4)] flex items-center justify-center gap-3 uppercase tracking-wider text-sm">
+<span>Aceptar Invitación</span>
+<span class="material-symbols-outlined font-bold">check_circle</span>
+</button>
+<button class="w-full py-5 px-6 bg-transparent border-2 border-primary/40 hover:border-primary active:scale-[0.98] text-primary font-bold rounded-2xl transition-all flex items-center justify-center gap-3 uppercase tracking-wider text-sm">
+<span>Rechazar</span>
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="w-32 h-1.5 bg-white/10 rounded-full"></div>
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+<div class="absolute top-[20%] -left-[20%] w-[60%] h-[40%] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-primary/5 blur-[100px] rounded-full"></div>
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]"></div>
+</div>
+</div>
+
+</body></html>

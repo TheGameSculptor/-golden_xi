@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Bienvenida - Golden XI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4af35",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#0F0F0F",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior-y: contain;
+        }
+        .gold-gradient-bg {
+            background: radial-gradient(circle at top, rgba(212, 175, 53, 0.15) 0%, rgba(15, 15, 15, 0) 70%);
+        }
+        .success-ring {
+            box-shadow: 0 0 20px rgba(212, 175, 53, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased">
+<div class="relative min-h-screen flex flex-col items-center justify-between px-6 py-12 gold-gradient-bg">
+<!-- Top Status Bar Simulation (iOS Style) -->
+<div class="w-full flex justify-between items-center px-4 fixed top-0 left-0 pt-2 opacity-60">
+<span class="text-xs font-semibold">9:41</span>
+<div class="flex gap-1.5">
+<span class="material-icons-round text-[14px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[14px]">wifi</span>
+<span class="material-icons-round text-[14px]">battery_full</span>
+</div>
+</div>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col items-center justify-center w-full max-w-sm text-center">
+<!-- Success Icon -->
+<div class="mb-8 relative">
+<div class="w-24 h-24 rounded-full border-4 border-primary flex items-center justify-center success-ring bg-primary/10">
+<span class="material-icons-round text-primary text-6xl">check</span>
+</div>
+</div>
+<!-- Celebration Text -->
+<div class="space-y-3 mb-12">
+<h1 class="text-4xl font-extrabold tracking-tighter text-primary italic uppercase leading-none">
+                    ¡ENHORABUENA!
+                </h1>
+<p class="text-lg text-slate-400 font-light leading-snug">
+                    Tu club <span class="text-white font-semibold">Real Galácticos</span> ya forma parte de <span class="text-primary font-bold">Golden XI</span>.
+                </p>
+</div>
+<!-- Club Logo Showcase -->
+<div class="relative mb-16">
+<div class="p-1 rounded-xl bg-gradient-to-b from-primary to-primary/20 shadow-2xl">
+<div class="bg-background-dark rounded-lg p-6 flex items-center justify-center overflow-hidden w-40 h-40">
+<img alt="Club Logo" class="w-full h-full object-contain" data-alt="Modern sports club shield logo with golden details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNQjoOv4kHeCM5ybltgmRao9xIkrAGfXPN5HtQfk-y4o9vzwu83LdPeRzwozJcTr0ljcMteXyHy4ZM5quKVrGL6UTVkPtaRYNQcRhfD6TaA_zkIq7R9dXsD6-2OXgIWDa1uIBIUCKIV434olur9kNfpRZt2DB0bGlMApXk5ph9iJv1PtBMoEpEes0J0hi7mEdoP76c-7moIKy0iqK04iUMTTXh5igEhTRtIzcxeBqoGYFFtXSADwvWOX5xIQmOnkhZyEZCxkr_lA"/>
+</div>
+</div>
+<!-- Premium Badge Decor -->
+<div class="absolute -bottom-3 -right-3 bg-primary text-background-dark rounded-full p-1.5 shadow-lg flex items-center justify-center">
+<span class="material-icons-round text-sm">workspace_premium</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full max-w-sm space-y-4 mb-8">
+<button class="w-full py-4 px-6 bg-primary hover:bg-primary/90 text-background-dark font-extrabold rounded-xl transition-all shadow-xl flex items-center justify-center gap-2 uppercase tracking-wide">
+<span>Ir al Panel de Control</span>
+<span class="material-icons-round">dashboard</span>
+</button>
+<button class="w-full py-4 px-6 bg-transparent border-2 border-primary/50 hover:border-primary text-primary font-bold rounded-xl transition-all flex items-center justify-center gap-2 uppercase tracking-wide">
+<span>Configurar Primer Equipo</span>
+<span class="material-icons-round">groups</span>
+</button>
+</div>
+<!-- iOS Bottom Indicator Spacer -->
+<div class="w-32 h-1.5 bg-white/20 rounded-full mb-2"></div>
+</div>
+<!-- Decorative Background Elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+<div class="absolute top-[10%] -left-[10%] w-[50%] h-[30%] bg-primary/5 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-[5%] -right-[5%] w-[40%] h-[40%] bg-primary/5 blur-[80px] rounded-full"></div>
+</div>
+</body></html>

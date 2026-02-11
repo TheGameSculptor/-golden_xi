@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Golden XI Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4af35",
+                        "primary-dark": "#b8952a",
+                        "primary-light": "#eacc60",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#0F0F0F", // Adjusted to requested #0F0F0F
+                        "surface-dark": "#1A1A1A",
+                        "surface-input": "#141414",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    backgroundImage: {
+                        'gold-gradient': 'linear-gradient(135deg, #d4af35 0%, #b8952a 100%)',
+                        'dark-mesh': 'radial-gradient(circle at center, #1F1F1F 1px, transparent 1px)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px #141414 inset !important;
+            -webkit-text-fill-color: white !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+        .gold-glow {
+            box-shadow: 0 0 20px -5px rgba(212, 175, 53, 0.4);
+        }
+        .gold-border-focus:focus-within {
+            border-color: #d4af35;
+            box-shadow: 0 0 0 1px #d4af35;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-white font-display antialiased h-screen w-full overflow-hidden flex flex-col items-center justify-center relative">
+<div class="absolute inset-0 z-0 opacity-10 pointer-events-none" style="background-size: 20px 20px; background-image: radial-gradient(#d4af35 1px, transparent 1px);"></div>
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+<div class="absolute bottom-0 left-0 w-80 h-80 bg-primary/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2"></div>
+<main class="w-full max-w-md px-6 py-8 md:px-8 relative z-10 flex flex-col justify-between h-full max-h-[900px]">
+<div class="flex flex-col items-center pt-8 mb-8 space-y-6">
+<div class="relative group cursor-default">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary via-primary-light to-primary rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative w-20 h-20 bg-surface-dark rounded-xl border border-primary/20 flex items-center justify-center shadow-2xl">
+<span class="material-icons text-5xl text-primary bg-clip-text">shield</span>
+</div>
+</div>
+<div class="text-center space-y-2">
+<h1 class="text-4xl font-extrabold tracking-tight text-white">
+                    GOLDEN <span class="text-primary">XI</span>
+</h1>
+<p class="text-sm font-light text-gray-400 tracking-wide uppercase opacity-80">Premium Club Management</p>
+</div>
+</div>
+<div class="w-full space-y-6">
+<form action="#" class="space-y-5" onsubmit="event.preventDefault();">
+<div class="group">
+<label class="block text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider ml-1" for="email">Email Address</label>
+<div class="relative gold-border-focus rounded-lg bg-surface-input border border-gray-800 transition-all duration-300">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons text-gray-500 text-xl group-focus-within:text-primary transition-colors">mail_outline</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-4 bg-transparent border-none text-white placeholder-gray-600 focus:ring-0 sm:text-sm" id="email" name="email" placeholder="manager@goldenxi.com" type="email"/>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between items-center mb-1.5 ml-1">
+<label class="block text-xs font-medium text-gray-400 uppercase tracking-wider" for="password">Password</label>
+</div>
+<div class="relative gold-border-focus rounded-lg bg-surface-input border border-gray-800 transition-all duration-300">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons text-gray-500 text-xl group-focus-within:text-primary transition-colors">lock_outline</span>
+</div>
+<input class="block w-full pl-10 pr-10 py-4 bg-transparent border-none text-white placeholder-gray-600 focus:ring-0 sm:text-sm" id="password" name="password" placeholder="••••••••••••" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+<span class="material-icons text-gray-600 hover:text-white transition-colors text-lg">visibility_off</span>
+</div>
+</div>
+<div class="flex justify-end mt-2">
+<a class="text-xs font-medium text-primary hover:text-primary-light transition-colors duration-200" href="#">Forgot Password?</a>
+</div>
+</div>
+<button class="w-full flex justify-center items-center py-4 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-black bg-gold-gradient hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-gray-900 transition-all duration-200 transform hover:scale-[1.02] gold-glow mt-8" type="submit">
+                    LOGIN TO DASHBOARD
+                    <span class="material-icons text-base ml-2">arrow_forward</span>
+</button>
+</form>
+<div class="relative mt-8">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gray-800"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="px-4 bg-background-dark text-xs text-gray-500 font-medium">OR CONTINUE WITH</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6">
+<button class="flex items-center justify-center px-4 py-3 border border-gray-800 rounded-lg bg-surface-dark hover:bg-gray-800 hover:border-gray-700 transition-colors duration-200 group">
+<svg class="h-5 w-5 text-white group-hover:text-primary transition-colors" fill="currentColor" viewBox="0 0 24 24">
+<path d="M24 12.276c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.234 24 18.266 24 12.276z" fill-opacity="0"></path>
+<path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .533 5.347.533 12S5.867 24 12.48 24c3.44 0 6.04-1.133 8.093-3.253 2.08-2.147 2.747-5.813 2.52-8.373l-10.613-.253z"></path>
+</svg>
+<span class="ml-2 text-sm font-medium text-gray-300">Google</span>
+</button>
+<button class="flex items-center justify-center px-4 py-3 border border-gray-800 rounded-lg bg-surface-dark hover:bg-gray-800 hover:border-gray-700 transition-colors duration-200 group">
+<span class="material-icons text-white group-hover:text-primary transition-colors">apple</span>
+<span class="ml-2 text-sm font-medium text-gray-300">Apple</span>
+</button>
+</div>
+</div>
+<div class="pb-6 text-center mt-auto">
+<p class="text-sm text-gray-400">
+                New to the club? 
+                <a class="font-bold text-primary hover:text-primary-light transition-colors ml-1" href="#">Join Now</a>
+</p>
+<div class="mt-8 flex justify-center space-x-2">
+<div class="w-12 h-1 bg-primary rounded-full opacity-100"></div>
+<div class="w-2 h-1 bg-gray-700 rounded-full"></div>
+<div class="w-2 h-1 bg-gray-700 rounded-full"></div>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 opacity-5 w-48 h-48 pointer-events-none overflow-hidden">
+<img alt="texture" class="object-cover w-full h-full mix-blend-overlay filter grayscale" data-alt="Abstract esports controller texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACGLaKMV73FO96Sf4IHJ4TbgwEn_Ft_7A6ZI01M4TzEWmBBWWOvPQZC1nRKdIjUOnOzNQuv-O7FrplGGq5DcqhyinTF5QNDZtsCYYAJerg3KfDXDT92soQLqZYTieTF6dOs5qXPdxg7B2uZ8Ib9dP1vb1xpWeIPdecE3gXWYNfvFQq7oaOivaemRLheZJKrCwK5C7liGIESY0cUc7z30DolkdZ0_amFWqH9EEquan2z1U8-Zcb124vFokaXkWok8RuZTXX1J_jaQ"/>
+</div>
+</main>
+</body></html>

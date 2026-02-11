@@ -64,7 +64,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '20865995402',
     projectId: 'golden-xi-25e9b',
     storageBucket: 'golden-xi-25e9b.firebasestorage.app',
-    iosBundleId: 'com.example.goldenXi',
+    iosBundleId: 'com.antoniojabang.goldenxi',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -73,7 +73,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '20865995402',
     projectId: 'golden-xi-25e9b',
     storageBucket: 'golden-xi-25e9b.firebasestorage.app',
-    iosBundleId: 'com.example.goldenXi',
+    iosBundleId: 'com.antoniojabang.goldenxi',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

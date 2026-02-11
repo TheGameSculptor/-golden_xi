@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_theme.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
 
 class StaffHomeScaffold extends StatefulWidget {
   const StaffHomeScaffold({super.key});
@@ -19,11 +19,11 @@ class _StaffHomeScaffoldState extends State<StaffHomeScaffold> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'GOLDEN XI STAFF',
+              'PERSONAL GOLDEN XI',
               style: GoogleFonts.lexend(fontSize: 10, color: AppTheme.primaryGold, letterSpacing: 1.5, fontWeight: FontWeight.bold),
             ),
             Text(
-              'Lineup Management',
+              'Gestión de Alineación',
               style: GoogleFonts.lexend(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ],
@@ -49,48 +49,50 @@ class _StaffHomeScaffoldState extends State<StaffHomeScaffold> {
   }
 
   Widget _buildPitch() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+    return AspectRatio(
       aspectRatio: 3/4,
-      decoration: BoxDecoration(
-        color: const Color(0xFF201D12),
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-             const Color(0xFF2A2618),
-             AppTheme.backgroundDark,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: const Color(0xFF201D12),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+               const Color(0xFF2A2618),
+               AppTheme.backgroundDark,
+            ],
+          ),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: AppTheme.primaryGold.withOpacity(0.3)),
+          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.5), blurRadius: 20)],
+        ),
+        child: Stack(
+          children: [
+            // Pitch Markings
+            _buildPitchLines(),
+            
+            // Players (4-3-3 simplistic)
+            // Forwards
+            _buildPlayerNode(0.15, 0.2, '11', 'Vinícius'),
+            _buildPlayerNode(0.5, 0.15, '9', 'Mbappé'),
+            _buildPlayerNode(0.85, 0.2, '7', 'Rodrygo'),
+            
+            // Midfield
+            _buildPlayerNode(0.3, 0.45, '5', 'Bellingham'),
+            _buildPlayerNode(0.5, 0.55, '8', 'Valverde'),
+            _buildPlayerNode(0.7, 0.45, '14', 'Tchouaméni'),
+
+            // Defense
+            _buildPlayerNode(0.15, 0.75, '23', 'Mendy'),
+            _buildPlayerNode(0.38, 0.8, '22', 'Rüdiger'),
+            _buildPlayerNode(0.62, 0.8, '3', 'Militão'),
+            _buildPlayerNode(0.85, 0.75, '2', 'Carvajal'),
+
+            // Goalkeeper
+            _buildPlayerNode(0.5, 0.92, '1', 'Courtois'),
           ],
         ),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppTheme.primaryGold.withOpacity(0.3)),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.5), blurRadius: 20)],
-      ),
-      child: Stack(
-        children: [
-          // Pitch Markings
-          _buildPitchLines(),
-          
-          // Players (4-3-3 simplistic)
-          // Forwards
-          _buildPlayerNode(0.15, 0.2, '11', 'Vinícius'),
-          _buildPlayerNode(0.5, 0.15, '9', 'Mbappé'),
-          _buildPlayerNode(0.85, 0.2, '7', 'Rodrygo'),
-          
-          // Midfield
-          _buildPlayerNode(0.3, 0.45, '5', 'Bellingham'),
-          _buildPlayerNode(0.5, 0.55, '8', 'Valverde'),
-          _buildPlayerNode(0.7, 0.45, '14', 'Tchouaméni'),
-
-          // Defense
-          _buildPlayerNode(0.15, 0.75, '23', 'Mendy'),
-          _buildPlayerNode(0.38, 0.8, '22', 'Rüdiger'),
-          _buildPlayerNode(0.62, 0.8, '3', 'Militão'),
-          _buildPlayerNode(0.85, 0.75, '2', 'Carvajal'),
-
-          // Goalkeeper
-          _buildPlayerNode(0.5, 0.92, '1', 'Courtois'),
-        ],
       ),
     );
   }
@@ -181,7 +183,7 @@ class _StaffHomeScaffoldState extends State<StaffHomeScaffold> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('BENCH', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey[500], letterSpacing: 1.5)),
+          Text('BANQUILLO', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey[500], letterSpacing: 1.5)),
           const SizedBox(height: 12),
           SizedBox(
             height: 80,

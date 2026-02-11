@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../../routes/app_routes.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
+import 'package:golden_xi/routes/app_routes.dart';
+import 'package:golden_xi/routes/app_routes.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -13,7 +14,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  String _selectedRole = 'Player'; // Default role
+  String _selectedRole = 'Jugador'; // Default role
   bool _isLoading = false;
   bool _obscurePassword = true;
   
@@ -47,12 +48,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
         if (mounted) {
            ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Account created successfully!'),
+              content: Text('¡Cuenta creada con éxito!'),
               backgroundColor: Colors.green,
             ),
           );
-          // Navigate to home or login
-          // Navigator.pop(context); // Go back to login or replace to Home
+          
+          switch (_selectedRole) {
+            case 'Staff':
+              Navigator.pushReplacementNamed(context, AppRoutes.staffHome);
+              break;
+            case 'Dueño':
+              Navigator.pushReplacementNamed(context, AppRoutes.ownerHome);
+              break;
+            default: // 'Jugador'
+              Navigator.pushReplacementNamed(context, AppRoutes.playerHome);
+          }
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -196,12 +206,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                          ),
                          const SizedBox(height: 16),
                          Text(
-                           'Create Your Legacy',
+                           'Crea Tu Legado',
                            style: GoogleFonts.lexend(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
                          ),
                          const SizedBox(height: 8),
                          Text(
-                           'Join the Golden XI elite community',
+                           'Únete a la comunidad de élite Golden XI',
                            style: GoogleFonts.lexend(fontSize: 14, color: Colors.grey[400]),
                          ),
                        ],
@@ -211,17 +221,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                    const SizedBox(height: 32),
                    
                    Text(
-                     'SELECT YOUR ROLE',
+                     'SELECCIONA TU ROL',
                      style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primaryGold.withOpacity(0.8), letterSpacing: 1),
                    ),
                    const SizedBox(height: 16),
                    Row(
                      children: [
-                       _buildRoleCard('Player', Icons.sports_esports, _selectedRole == 'Player'),
+                       _buildRoleCard('Jugador', Icons.sports_esports, _selectedRole == 'Jugador'),
                        const SizedBox(width: 12),
                        _buildRoleCard('Staff', Icons.assignment_ind, _selectedRole == 'Staff'),
                        const SizedBox(width: 12),
-                       _buildRoleCard('Owner', Icons.diamond, _selectedRole == 'Owner'),
+                       _buildRoleCard('Dueño', Icons.diamond, _selectedRole == 'Dueño'),
                      ],
                    ),
                    
@@ -234,7 +244,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                          child: Column(
                            crossAxisAlignment: CrossAxisAlignment.start,
                            children: [
-                             Text('First Name', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
+                             Text('Nombre', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
                              const SizedBox(height: 8),
                              TextFormField(
                                controller: _firstNameController,
@@ -249,7 +259,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                          child: Column(
                            crossAxisAlignment: CrossAxisAlignment.start,
                            children: [
-                             Text('Last Name', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
+                             Text('Apellidos', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
                              const SizedBox(height: 8),
                              TextFormField(
                                controller: _lastNameController,
@@ -267,7 +277,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                    Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       Text('Phone Number', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
+                       Text('Teléfono', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
                        const SizedBox(height: 8),
                        TextFormField(
                           controller: _phoneController,
@@ -283,7 +293,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                    Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       Text('Email Address', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
+                       Text('Correo Electrónico', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
                        const SizedBox(height: 8),
                        TextFormField(
                           controller: _emailController,
@@ -299,7 +309,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                    Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       Text('Password', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
+                       Text('Contraseña', style: GoogleFonts.lexend(color: Colors.grey[400], fontSize: 13)),
                        const SizedBox(height: 8),
                        TextFormField(
                           controller: _passwordController,
@@ -326,7 +336,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         : Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text('Register Account'),
+                              const Text('Crear Cuenta'),
                               const SizedBox(width: 8),
                               const Icon(Icons.arrow_forward, size: 18),
                             ],
@@ -342,9 +352,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                          text: TextSpan(
                            style: GoogleFonts.lexend(fontSize: 14, color: Colors.grey[400]),
                            children: [
-                             const TextSpan(text: 'Already a member? '),
+                             const TextSpan(text: '¿Ya eres miembro? '),
                              TextSpan(
-                               text: 'Log in',
+                               text: 'Inicia Sesión',
                                style: TextStyle(
                                  color: AppTheme.primaryGold,
                                  fontWeight: FontWeight.bold,

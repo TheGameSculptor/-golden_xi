@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/theme/app_theme.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
 
 class StaffDashboardView extends StatelessWidget {
   const StaffDashboardView({super.key});
@@ -14,15 +14,15 @@ class StaffDashboardView extends StatelessWidget {
         children: [
           _buildStatsRow(),
           const SizedBox(height: 40),
-          _buildSectionTitle('MY TEAM', 'View Roster'),
+          _buildSectionTitle('MI EQUIPO', 'Ver Plantilla'),
           const SizedBox(height: 16),
           _buildTeamHero(),
           const SizedBox(height: 40),
-          _buildSectionTitle('PENDING TASKS', null),
+          _buildSectionTitle('TAREAS PENDIENTES', null),
           const SizedBox(height: 16),
           _buildTasksList(),
           const SizedBox(height: 40),
-          _buildSectionTitle('TOURNAMENTS', 'See All'),
+          _buildSectionTitle('TORNEOS', 'Ver Todos'),
           const SizedBox(height: 16),
           _buildTournamentsCarousel(),
         ],
@@ -33,11 +33,11 @@ class StaffDashboardView extends StatelessWidget {
   Widget _buildStatsRow() {
     return Row(
       children: [
-        Expanded(child: _buildStatItem('Win Rate', '72%', Colors.green)),
+        Expanded(child: _buildStatItem('Ratio Victoria', '72%', Colors.green)),
         const SizedBox(width: 12),
-        Expanded(child: _buildStatItem('Morale', 'High', AppTheme.primaryGold)),
+        Expanded(child: _buildStatItem('Moral', 'Alta', AppTheme.primaryGold)),
         const SizedBox(width: 12),
-        Expanded(child: _buildStatItem('Budget', '\$1.2M', Colors.white)),
+        Expanded(child: _buildStatItem('Presupuesto', '\$1.2M', Colors.white)),
       ],
     );
   }
@@ -69,8 +69,8 @@ class StaffDashboardView extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4), decoration: BoxDecoration(color: Colors.green.withOpacity(0.2), borderRadius: BorderRadius.circular(8)), child: Text('Match Ready', style: GoogleFonts.lexend(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.green))),
-              Text('In 2h 30m', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primaryGold)),
+              Container(padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4), decoration: BoxDecoration(color: Colors.green.withOpacity(0.2), borderRadius: BorderRadius.circular(8)), child: Text('Listo Para Partido', style: GoogleFonts.lexend(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.green))),
+              Text('En 2h 30m', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primaryGold)),
             ],
           ),
           const SizedBox(height: 20),
@@ -79,7 +79,7 @@ class StaffDashboardView extends StatelessWidget {
             children: [
               Text('Golden XI', style: GoogleFonts.lexend(fontSize: 24, fontWeight: FontWeight.w900, color: Colors.white)),
               const SizedBox(width: 8),
-              Text('vs', style: GoogleFonts.lexend(fontSize: 18, fontWeight: FontWeight.w300, color: Colors.white38, italic: true)),
+              Text('vs', style: GoogleFonts.lexend(fontSize: 18, fontWeight: FontWeight.w300, color: Colors.white38, fontStyle: FontStyle.italic)),
               const SizedBox(width: 8),
               Text('Titans', style: GoogleFonts.lexend(fontSize: 24, fontWeight: FontWeight.w900, color: Colors.white)),
             ],
@@ -88,7 +88,7 @@ class StaffDashboardView extends StatelessWidget {
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(backgroundColor: AppTheme.primaryGold, foregroundColor: Colors.black, minimumSize: const Size(double.infinity, 50)),
-            child: const Text('Manage Lineup'),
+            child: const Text('Gestionar Alineación'),
           ),
         ],
       ),
@@ -98,9 +98,9 @@ class StaffDashboardView extends StatelessWidget {
   Widget _buildTasksList() {
     return Column(
       children: [
-        _buildTaskItem(Icons.badge, 'Contract Renewal', 'Review terms for M. Johnson'),
+        _buildTaskItem(Icons.badge, 'Renovación Contrato', 'Revisar términos de M. Johnson'),
         const SizedBox(height: 12),
-        _buildTaskItem(Icons.medical_services, 'Injury Report', 'Approve rehab plan for Striker'),
+        _buildTaskItem(Icons.medical_services, 'Informe de Lesiones', 'Aprobar plan de rehabilitación'),
       ],
     );
   }
@@ -126,9 +126,9 @@ class StaffDashboardView extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          _buildTournamentCard('REGIONAL FINALS', 'Summer League', 'Aug 24 - 26'),
+          _buildTournamentCard('FINALES REGIONALES', 'Liga de Verano', '24 - 26 Ago'),
           const SizedBox(width: 16),
-          _buildTournamentCard('CHARITY CUP', 'Community', 'Sep 10'),
+          _buildTournamentCard('COPA BENÉFICA', 'Comunidad', '10 Sep'),
         ],
       ),
     );

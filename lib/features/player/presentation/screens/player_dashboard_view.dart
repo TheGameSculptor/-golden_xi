@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/theme/app_theme.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
 
 class PlayerDashboardView extends StatelessWidget {
   const PlayerDashboardView({super.key});
@@ -34,8 +34,8 @@ class PlayerDashboardView extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('READY FOR', style: GoogleFonts.lexend(fontSize: 24, fontWeight: FontWeight.bold, italic: true, color: Colors.white, height: 1)),
-            Text('THE PITCH?', style: GoogleFonts.lexend(fontSize: 24, fontWeight: FontWeight.bold, italic: true, color: AppTheme.primaryGold, height: 1.2)),
+            Text('LISTO PARA', style: GoogleFonts.lexend(fontSize: 24, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, color: Colors.white, height: 1)),
+            Text('¿EL CAMPO?', style: GoogleFonts.lexend(fontSize: 24, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, color: AppTheme.primaryGold, height: 1.2)),
           ],
         ),
         Container(
@@ -45,7 +45,7 @@ class PlayerDashboardView extends StatelessWidget {
             border: Border.all(color: AppTheme.primaryGold.withOpacity(0.3)),
             borderRadius: BorderRadius.circular(4),
           ),
-          child: Text('RANK #42', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primaryGold)),
+          child: Text('RANGO #42', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primaryGold)),
         ),
       ],
     );
@@ -54,11 +54,11 @@ class PlayerDashboardView extends StatelessWidget {
   Widget _buildStatsOverview() {
     return Row(
       children: [
-        Expanded(child: _buildStatItem('Win Rate', '68%', false)),
+        Expanded(child: _buildStatItem('Victorias', '68%', false)),
         const SizedBox(width: 12),
         Expanded(child: _buildStatItem('MMR', '2,450', true)),
         const SizedBox(width: 12),
-        Expanded(child: _buildStatItem('Matches', '142', false)),
+        Expanded(child: _buildStatItem('Partidas', '142', false)),
       ],
     );
   }
@@ -94,7 +94,7 @@ class PlayerDashboardView extends StatelessWidget {
               children: [
                 Container(width: 6, height: 6, decoration: const BoxDecoration(color: AppTheme.primaryGold, shape: BoxShape.circle)),
                 const SizedBox(width: 6),
-                Text('Live Check-in', style: GoogleFonts.lexend(fontSize: 12, color: AppTheme.primaryGold)),
+                Text('Check-in en Vivo', style: GoogleFonts.lexend(fontSize: 12, color: AppTheme.primaryGold)),
               ],
             ),
           ],
@@ -124,7 +124,7 @@ class PlayerDashboardView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buildMatchTeam('GXI Elite', Icons.shield),
-                    Text('VS', style: GoogleFonts.lexend(fontSize: 24, fontWeight: FontWeight.bold, italic: true, color: AppTheme.primaryGold)),
+                    Text('VS', style: GoogleFonts.lexend(fontSize: 24, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, color: AppTheme.primaryGold)),
                     _buildMatchTeam('Liquid', Icons.water_drop, grayscale: true),
                   ],
                 ),
@@ -132,7 +132,7 @@ class PlayerDashboardView extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(minimumSize: const Size(double.infinity, 50)),
-                  child: Text('CHECK-IN NOW', style: GoogleFonts.lexend(fontWeight: FontWeight.bold)),
+                  child: Text('REGISTRARSE AHORA', style: GoogleFonts.lexend(fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
@@ -179,11 +179,11 @@ class PlayerDashboardView extends StatelessWidget {
   Widget _buildTournamentsSection() {
     return Column(
       children: [
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text('OTHER TOURNAMENTS', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey, letterSpacing: 2)), Text('View All', style: GoogleFonts.lexend(fontSize: 12, color: AppTheme.primaryGold))]),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text('OTROS TORNEOS', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey, letterSpacing: 2)), Text('Ver Todo', style: GoogleFonts.lexend(fontSize: 12, color: AppTheme.primaryGold))]),
         const SizedBox(height: 16),
-        _buildTournamentCard('Weekly Showdown', 'Active', 'Round 3 of 8', Colors.green),
+        _buildTournamentCard('Enfrentamiento Semanal', 'Activo', 'Ronda 3 de 8', Colors.green),
         const SizedBox(height: 12),
-        _buildTournamentCard('Summer League', 'Reg Open', 'Starts in 2d', Colors.orange),
+        _buildTournamentCard('Liga de Verano', 'Reg Abierto', 'Inicia en 2d', Colors.orange),
       ],
     );
   }

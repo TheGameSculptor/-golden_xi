@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_theme.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
 
 class OwnerHomeScaffold extends StatefulWidget {
   const OwnerHomeScaffold({super.key});
@@ -10,7 +10,6 @@ class OwnerHomeScaffold extends StatefulWidget {
 }
 
 class _OwnerHomeScaffoldState extends State<OwnerHomeScaffold> {
-  int _selectedIndex = 0;
   // Simulating empty state first, then having a club.
   bool _hasClub = false; 
 
@@ -52,7 +51,7 @@ class _OwnerHomeScaffoldState extends State<OwnerHomeScaffold> {
              child: Icon(Icons.shield, color: AppTheme.primaryGold, size: 32),
           ),
           Text(
-            'OWNER PORTAL',
+            'PORTAL DE PROPIETARIOS',
             style: GoogleFonts.lexend(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -84,12 +83,12 @@ class _OwnerHomeScaffoldState extends State<OwnerHomeScaffold> {
             ),
             const SizedBox(height: 32),
             Text(
-              'No Club Registered',
+              'No hay club registrado',
               style: GoogleFonts.lexend(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
             ),
             const SizedBox(height: 12),
             Text(
-              'Start your journey by registering your official club details.',
+              'Comienza tu viaje registrando los detalles oficiales de tu club.',
               textAlign: TextAlign.center,
               style: GoogleFonts.lexend(fontSize: 14, color: Colors.grey[400], height: 1.5),
             ),
@@ -105,7 +104,7 @@ class _OwnerHomeScaffoldState extends State<OwnerHomeScaffold> {
                 padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 textStyle: GoogleFonts.lexend(fontWeight: FontWeight.bold),
               ),
-              child: const Text('REGISTER NEW CLUB'),
+              child: const Text('REGISTRAR NUEVO CLUB'),
             ),
              const SizedBox(height: 100),
           ],
@@ -122,21 +121,21 @@ class _OwnerHomeScaffoldState extends State<OwnerHomeScaffold> {
          children: [
            _buildClubCard(),
            const SizedBox(height: 24),
-           Text('QUICK ACTIONS', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey[500], letterSpacing: 1.5)),
+           Text('ACCIONES RÁPIDAS', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey[500], letterSpacing: 1.5)),
            const SizedBox(height: 16),
            Row(
              children: [
-               Expanded(child: _buildActionCard('Manage\nStaff', Icons.people_outline)),
+               Expanded(child: _buildActionCard('Gestionar\nPersonal', Icons.people_outline)),
                const SizedBox(width: 16),
-               Expanded(child: _buildActionCard('Club\nFinances', Icons.attach_money)),
+               Expanded(child: _buildActionCard('Finanzas\nClub', Icons.attach_money)),
              ],
            ),
             const SizedBox(height: 16),
            Row(
              children: [
-               Expanded(child: _buildActionCard('Transfer\nMarket', Icons.swap_horiz)),
+               Expanded(child: _buildActionCard('Mercado de\nTransferencias', Icons.swap_horiz)),
                const SizedBox(width: 16),
-               Expanded(child: _buildActionCard('Club\nSettings', Icons.settings_outlined)),
+               Expanded(child: _buildActionCard('Ajustes del\nClub', Icons.settings_outlined)),
              ],
            ),
            const SizedBox(height: 100),
@@ -180,7 +179,7 @@ class _OwnerHomeScaffoldState extends State<OwnerHomeScaffold> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('MADRID ELITE FC', style: GoogleFonts.lexend(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
-                  Text('President: Juan Pérez', style: GoogleFonts.lexend(fontSize: 12, color: Colors.grey[400])),
+                  Text('Presidente: Juan Pérez', style: GoogleFonts.lexend(fontSize: 12, color: Colors.grey[400])),
                 ],
               ),
             ],
@@ -191,9 +190,9 @@ class _OwnerHomeScaffoldState extends State<OwnerHomeScaffold> {
           Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
-               _buildClubStat('Teams', '3'),
-               _buildClubStat('Staff', '12'),
-               _buildClubStat('Players', '45'),
+               _buildClubStat('Equipos', '3'),
+               _buildClubStat('Personal', '12'),
+               _buildClubStat('Jugadores', '45'),
              ],
           ),
         ],

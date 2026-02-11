@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../../routes/app_routes.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
+import 'package:golden_xi/routes/app_routes.dart';
+import 'package:golden_xi/core/services/shorebird_service.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,7 +25,10 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     );
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
     _controller.forward();
+// Check for Shorebird updates silently
+    ShorebirdService().checkForUpdates();
 
+    
     Timer(const Duration(seconds: 3), () {
       if (mounted) {
         Navigator.pushReplacementNamed(context, AppRoutes.login);
@@ -89,7 +93,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               ),
               const SizedBox(height: 8),
               Text(
-                'PREMIUM CLUB MANAGEMENT',
+                'GESTIÓN DE CLUB PREMIUM',
                 style: GoogleFonts.lexend(
                   fontSize: 12,
                   fontWeight: FontWeight.w300,

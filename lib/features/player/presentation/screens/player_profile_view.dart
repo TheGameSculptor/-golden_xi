@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/theme/app_theme.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
 
 class PlayerProfileView extends StatelessWidget {
   const PlayerProfileView({super.key});
@@ -16,13 +16,13 @@ class PlayerProfileView extends StatelessWidget {
           const SizedBox(height: 32),
           _buildStatsGrid(),
           const SizedBox(height: 32),
-          _buildSectionTitle('RECENT RESULTS'),
+          _buildSectionTitle('RESULTADOS RECIENTES'),
           const SizedBox(height: 16),
-          _buildResultItem('WIN', 'vs Titans FC', '3 - 1', Colors.green),
+          _buildResultItem('VICTORIA', 'vs Titans FC', '3 - 1', Colors.green),
           const SizedBox(height: 12),
-          _buildResultItem('DRAW', 'vs Madrid Lions', '2 - 2', Colors.grey),
+          _buildResultItem('EMPATE', 'vs Madrid Lions', '2 - 2', Colors.grey),
           const SizedBox(height: 12),
-          _buildResultItem('LOSS', 'vs Vikingos', '0 - 1', Colors.red),
+          _buildResultItem('DERROTA', 'vs Vikingos', '0 - 1', Colors.red),
         ],
       ),
     );
@@ -32,7 +32,7 @@ class PlayerProfileView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionTitle('NEXT MATCH'),
+        _buildSectionTitle('PRÓXIMO PARTIDO'),
         const SizedBox(height: 16),
         Container(
           width: double.infinity,
@@ -41,7 +41,7 @@ class PlayerProfileView extends StatelessWidget {
             color: AppTheme.surfaceDark,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: AppTheme.primaryGold.withOpacity(0.2)),
-            gradient: const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [AppTheme.surfaceDark, AppTheme.backgroundDark]),
+            gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [AppTheme.surfaceDark, AppTheme.backgroundDark]),
           ),
           child: Column(
             children: [
@@ -49,7 +49,7 @@ class PlayerProfileView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   _buildTeamLogo('GXI', Icons.shield),
-                  Column(children: [Text('VS', style: GoogleFonts.lexend(fontSize: 22, fontWeight: FontWeight.w900, color: AppTheme.primaryGold, italic: true)), Text('Tomorrow, 21:00', style: GoogleFonts.lexend(fontSize: 10, color: Colors.white38))]),
+                  Column(children: [Text('VS', style: GoogleFonts.lexend(fontSize: 22, fontWeight: FontWeight.w900, color: AppTheme.primaryGold, fontStyle: FontStyle.italic)), Text('Mañana, 21:00', style: GoogleFonts.lexend(fontSize: 10, color: Colors.white38))]),
                   _buildTeamLogo('TIT', Icons.sports_soccer),
                 ],
               ),
@@ -78,15 +78,15 @@ class PlayerProfileView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionTitle('STATISTICS'),
+        _buildSectionTitle('ESTADÍSTICAS'),
         const SizedBox(height: 16),
         Row(
           children: [
-            Expanded(child: _buildStatCard('24', 'MATCHES')),
+            Expanded(child: _buildStatCard('24', 'PARTIDOS')),
             const SizedBox(width: 12),
-            Expanded(child: _buildStatCard('18 / 6', 'GOALS/AST', highlight: true)),
+            Expanded(child: _buildStatCard('18 / 6', 'GOLES/AST', highlight: true)),
             const SizedBox(width: 12),
-            Expanded(child: _buildStatCard('8.2', 'RATING')),
+            Expanded(child: _buildStatCard('8.2', 'VALORACIÓN')),
           ],
         ),
       ],

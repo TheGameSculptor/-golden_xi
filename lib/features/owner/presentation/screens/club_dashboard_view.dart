@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/theme/app_theme.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
 
 class ClubDashboardView extends StatelessWidget {
   const ClubDashboardView({super.key});
@@ -16,11 +16,11 @@ class ClubDashboardView extends StatelessWidget {
           const SizedBox(height: 32),
           _buildStatsRow(),
           const SizedBox(height: 40),
-          _buildSectionTitle('Identity Management', 'View All'),
+          _buildSectionTitle('Gestión de Identidad', 'Ver Todo'),
           const SizedBox(height: 16),
           _buildIdentityGrid(),
           const SizedBox(height: 40),
-          _buildSectionTitle('Club Updates', null),
+          _buildSectionTitle('Actualizaciones del Club', null),
           const SizedBox(height: 16),
           _buildClubUpdatesList(),
         ],
@@ -62,11 +62,11 @@ class ClubDashboardView extends StatelessWidget {
   Widget _buildStatsRow() {
     return Row(
       children: [
-        Expanded(child: _buildStatItem('VALUATION', '\$12.5M', '+2.4%', Colors.green)),
+        Expanded(child: _buildStatItem('VALORACIÓN', '\$12.5M', '+2.4%', Colors.green)),
         const SizedBox(width: 12),
-        Expanded(child: _buildStatItem('FAN BASE', '850K', 'Global', null)),
+        Expanded(child: _buildStatItem('AFICIÓN', '850K', 'Global', null)),
         const SizedBox(width: 12),
-        Expanded(child: _buildStatItem('RANK', '#4', 'Elite Tier', AppTheme.primaryGold)),
+        Expanded(child: _buildStatItem('RANGO', '#4', 'Tier Elite', AppTheme.primaryGold)),
       ],
     );
   }
@@ -90,9 +90,9 @@ class ClubDashboardView extends StatelessWidget {
   Widget _buildIdentityGrid() {
     return Row(
       children: [
-        Expanded(child: _buildIdentityItem(Icons.checkroom, 'Edit Kit', 'Season 24/25')),
+        Expanded(child: _buildIdentityItem(Icons.checkroom, 'Editar Equipación', 'Temporada 24/25')),
         const SizedBox(width: 12),
-        Expanded(child: _buildIdentityItem(Icons.stadium, 'Stadium', 'Capacity: 45k')),
+        Expanded(child: _buildIdentityItem(Icons.stadium, 'Estadio', 'Capacidad: 45k')),
       ],
     );
   }
@@ -115,9 +115,9 @@ class ClubDashboardView extends StatelessWidget {
   Widget _buildClubUpdatesList() {
     return Column(
       children: [
-        _buildUpdateItem(Icons.monetization_on, 'Merchandise Revenue', 'Weekly payout processed.', '+\$45k', isGold: true),
+        _buildUpdateItem(Icons.monetization_on, 'Ingresos por Merchandising', 'Pago semanal procesado.', '+\$45k', isGold: true),
         const SizedBox(height: 12),
-        _buildUpdateItem(Icons.person_add, 'New Signing Scouted', 'Junior striker from Brazil academy.', null),
+        _buildUpdateItem(Icons.person_add, 'Nuevo Fichaje Ojeado', 'Delantero juvenil de academia de Brasil.', null),
       ],
     );
   }

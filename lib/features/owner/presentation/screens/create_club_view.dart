@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/theme/app_theme.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
 
 class CreateClubView extends StatelessWidget {
   const CreateClubView({super.key});
@@ -12,22 +12,22 @@ class CreateClubView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('ESTABLISH YOUR LEGACY', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primaryGold, letterSpacing: 2)),
+          Text('ESTABLECE TU LEGADO', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primaryGold, letterSpacing: 2)),
           const SizedBox(height: 8),
-          Text('Register Your Club', style: GoogleFonts.lexend(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white)),
+          Text('Registra Tu Club', style: GoogleFonts.lexend(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white)),
           const SizedBox(height: 32),
           _buildLogoUpload(),
           const SizedBox(height: 32),
-          _buildInputField('CLUB NAME', 'e.g. Real Galácticos FC'),
+          _buildInputField('NOMBRE DEL CLUB', 'ej. Real Galácticos FC'),
           const SizedBox(height: 20),
-          _buildInputField('PRESIDENT NAME', 'e.g. Florentino Pérez'),
+          _buildInputField('NOMBRE DEL PRESIDENTE', 'ej. Florentino Pérez'),
           const SizedBox(height: 20),
-          _buildInputField('CONTACT EMAIL', 'admin@club.com'),
+          _buildInputField('CORREO DE CONTACTO', 'admin@club.com'),
           const SizedBox(height: 48),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(backgroundColor: AppTheme.primaryGold, foregroundColor: Colors.black, minimumSize: const Size(double.infinity, 60)),
-            child: Text('CREATE CLUB', style: GoogleFonts.lexend(fontWeight: FontWeight.w900, fontSize: 16)),
+            child: Text('CREAR CLUB', style: GoogleFonts.lexend(fontWeight: FontWeight.w900, fontSize: 16)),
           ),
         ],
       ),
@@ -44,7 +44,7 @@ class CreateClubView extends StatelessWidget {
             child: const Icon(Icons.add_a_photo, color: AppTheme.primaryGold, size: 40),
           ),
           const SizedBox(height: 12),
-          Text('Upload Club Crest', style: GoogleFonts.lexend(fontSize: 12, color: Colors.white38)),
+          Text('Subir Escudo del Club', style: GoogleFonts.lexend(fontSize: 12, color: Colors.white38)),
         ],
       ),
     );

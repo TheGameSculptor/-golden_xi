@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_theme.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
 
 class PlayerHomeScaffold extends StatefulWidget {
   const PlayerHomeScaffold({super.key});
@@ -22,15 +22,18 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
           Positioned(
             top: 0,
             right: 0,
-            child: Container(
-              width: 300,
-              height: 300,
-              decoration: BoxDecoration(
-                color: AppTheme.primaryGold.withOpacity(0.05),
-                shape: BoxShape.circle,
-                backgroundBlendMode: BlendMode.plus,
+            child: Transform(
+              transform: Matrix4.translationValues(100, -100, 0),
+              child: Container(
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                  color: AppTheme.primaryGold.withOpacity(0.05),
+                  shape: BoxShape.circle,
+                  backgroundBlendMode: BlendMode.plus,
+                ),
               ),
-            ).transform(Matrix4.translationValues(100, -100, 0)),
+            ),
           ),
           
           SafeArea(
@@ -108,7 +111,7 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
                     ),
                   ),
                   Text(
-                    'Hello, Alex',
+                    'Hola, Alex',
                     style: GoogleFonts.lexend(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -159,9 +162,9 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
               height: 1.1,
             ),
             children: [
-              const TextSpan(text: 'READY FOR\n'),
+              const TextSpan(text: 'LISTO PARA\n'),
               TextSpan(
-                text: 'THE PITCH?',
+                text: '¿EL CAMPO?',
                 style: TextStyle(color: AppTheme.primaryGold),
               ),
             ],
@@ -175,7 +178,7 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
             border: Border.all(color: AppTheme.primaryGold.withOpacity(0.3)),
           ),
           child: Text(
-            'RANK #42',
+            'RANGO #42',
             style: GoogleFonts.lexend(
               fontSize: 12,
               fontWeight: FontWeight.bold,
@@ -190,11 +193,11 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
   Widget _buildStatsStrip() {
     return Row(
       children: [
-        Expanded(child: _buildStatCard('Win Rate', '68%', false)),
+        Expanded(child: _buildStatCard('Victorias', '68%', false)),
         const SizedBox(width: 12),
         Expanded(child: _buildStatCard('MMR', '2,450', true)),
         const SizedBox(width: 12),
-        Expanded(child: _buildStatCard('Matches', '142', false)),
+        Expanded(child: _buildStatCard('Partidas', '142', false)),
       ],
     );
   }
@@ -244,7 +247,7 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'NEXT MATCH',
+              'PRÓXIMO PARTIDO',
               style: GoogleFonts.lexend(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -257,7 +260,7 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
                 Container(width: 6, height: 6, decoration: const BoxDecoration(color: AppTheme.primaryGold, shape: BoxShape.circle)),
                 const SizedBox(width: 6),
                 Text(
-                  'Live Check-in',
+                  'Check-in en Vivo',
                   style: GoogleFonts.lexend(
                     fontSize: 12,
                     color: AppTheme.primaryGold,
@@ -285,7 +288,7 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
             child: Column(
               children: [
                 Text(
-                  'GOLDEN XI CUP - QUARTER FINAL',
+                  'COPA GOLDEN XI - CUARTOS DE FINAL',
                   style: GoogleFonts.lexend(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.grey[400], letterSpacing: 2),
                 ),
                 const SizedBox(height: 20),
@@ -316,7 +319,7 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
                     children: [
                       const Icon(Icons.login, size: 20),
                       const SizedBox(width: 8),
-                      Text('Check-in Now', style: GoogleFonts.lexend(fontWeight: FontWeight.bold)),
+                      Text('Registrarse Ahora', style: GoogleFonts.lexend(fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
@@ -325,7 +328,7 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
                   text: TextSpan(
                     style: GoogleFonts.lexend(fontSize: 12, color: Colors.grey[500]),
                     children: [
-                      const TextSpan(text: 'Check-in closes in '),
+                      const TextSpan(text: 'El registro cierra en '),
                       TextSpan(text: '14:20', style: GoogleFonts.jetBrainsMono(color: Colors.grey[300])),
                     ],
                   ),
@@ -359,9 +362,9 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
   Widget _buildQuickActions() {
     return Row(
       children: [
-        Expanded(child: _buildActionCard('Find Match', 'Ranked Queue', Icons.search)),
+        Expanded(child: _buildActionCard('Buscar Partido', 'Cola Clasificatoria', Icons.search)),
         const SizedBox(width: 16),
-        Expanded(child: _buildActionCard('Team Chat', '3 New Msgs', Icons.chat)),
+        Expanded(child: _buildActionCard('Chat de Equipo', '3 Mensajes Nuevos', Icons.chat)),
       ],
     );
   }
@@ -400,14 +403,14 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
         Row(
            mainAxisAlignment: MainAxisAlignment.spaceBetween,
            children: [
-             Text('OTHER TOURNAMENTS', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey[300], letterSpacing: 1.5)),
-             Text('View All', style: GoogleFonts.lexend(fontSize: 12, color: AppTheme.primaryGold)),
+             Text('OTROS TORNEOS', style: GoogleFonts.lexend(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey[300], letterSpacing: 1.5)),
+             Text('Ver Todo', style: GoogleFonts.lexend(fontSize: 12, color: AppTheme.primaryGold)),
            ],
         ),
         const SizedBox(height: 12),
-        _buildTournamentCard('Weekly Showdown', 'Round 3 of 8', 'Active', Colors.green),
+        _buildTournamentCard('Enfrentamiento Semanal', 'Ronda 3 de 8', 'Activo', Colors.green),
         const SizedBox(height: 12),
-        _buildTournamentCard('Summer League', 'Starts in 2d', 'Reg Open', AppTheme.primaryGold),
+        _buildTournamentCard('Liga de Verano', 'Inicia en 2d', 'Reg Abierto', AppTheme.primaryGold),
       ],
     );
   }
@@ -474,10 +477,10 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
        child: Row(
          mainAxisAlignment: MainAxisAlignment.spaceBetween,
          children: [
-           _buildNavItem(Icons.emoji_events, 'Tournaments', 0),
+           _buildNavItem(Icons.emoji_events, 'Torneos', 0),
            _buildNavItem(Icons.groups, 'Social', 1),
-           _buildNavItem(Icons.shield, 'My Team', 2),
-           _buildNavItem(Icons.person, 'Profile', 3),
+           _buildNavItem(Icons.shield, 'Mi Equipo', 2),
+           _buildNavItem(Icons.person, 'Perfil', 3),
          ],
        ),
      );
@@ -502,7 +505,7 @@ class _PlayerHomeScaffoldState extends State<PlayerHomeScaffold> {
           ),
           if (isSelected)
             Container(
-              margin: const EdgeInsets.top(4),
+              margin: const EdgeInsets.only(top: 4),
               width: 4, height: 4,
               decoration: const BoxDecoration(color: AppTheme.primaryGold, shape: BoxShape.circle),
             ),

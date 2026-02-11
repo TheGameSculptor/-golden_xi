@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../../routes/app_routes.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:golden_xi/core/theme/app_theme.dart';
+import 'package:golden_xi/routes/app_routes.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -25,15 +26,10 @@ class _LoginScreenState extends State<LoginScreen> {
         password: _passwordController.text.trim(),
       );
       if (mounted) {
-         // Simple routing logic based on email for testing purposes
-         final email = _emailController.text.toLowerCase();
-         if (email.contains('owner')) {
-           Navigator.pushReplacementNamed(context, AppRoutes.ownerHome);
-         } else if (email.contains('staff')) {
-           Navigator.pushReplacementNamed(context, AppRoutes.staffHome);
-         } else {
-           Navigator.pushReplacementNamed(context, AppRoutes.playerHome);
-         }
+        final user = FirebaseAuth.instance.currentUser;
+        if (user != null) {
+          await _checkRoleAndNavigate(user);
+        }
       }
     } on FirebaseAuthException catch (e) {
       if (mounted) {
@@ -52,6 +48,29 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
   
+  Future<void> _checkRoleAndNavigate(User user) async {
+    final doc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+    if (!mounted) return;
+    
+    if (doc.exists) {
+      final role = doc.data()?['role'] as String?;
+      switch (role) {
+        case 'Staff':
+          Navigator.pushReplacementNamed(context, AppRoutes.staffHome);
+          break;
+        case 'Dueño':
+        case 'Owner':
+          Navigator.pushReplacementNamed(context, AppRoutes.ownerHome);
+          break;
+        default:
+          Navigator.pushReplacementNamed(context, AppRoutes.playerHome);
+      }
+    } else {
+      // New user via Social Auth or legacy
+      Navigator.pushReplacementNamed(context, AppRoutes.playerHome);
+    }
+  }
+
   void _navigateToRegister() {
     Navigator.pushNamed(context, AppRoutes.register);
   }
@@ -73,28 +92,34 @@ class _LoginScreenState extends State<LoginScreen> {
           Positioned(
             top: 0,
             right: 0,
-            child: Container(
-              width: 300,
-              height: 300,
-              decoration: BoxDecoration(
-                color: AppTheme.primaryGold.withOpacity(0.05),
-                shape: BoxShape.circle,
-                backgroundBlendMode: BlendMode.plus,
+            child: Transform(
+              transform: Matrix4.translationValues(50, -50, 0),
+              child: Container(
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                  color: AppTheme.primaryGold.withOpacity(0.05),
+                  shape: BoxShape.circle,
+                  backgroundBlendMode: BlendMode.plus,
+                ),
               ),
-            ).transform(Matrix4.translationValues(50, -50, 0)),
+            ),
           ),
           Positioned(
             bottom: 0,
             left: 0,
-            child: Container(
-              width: 400,
-              height: 400,
-              decoration: BoxDecoration(
-                color: AppTheme.primaryGold.withOpacity(0.03),
-                shape: BoxShape.circle,
-                backgroundBlendMode: BlendMode.plus,
+            child: Transform(
+              transform: Matrix4.translationValues(-100, 100, 0),
+              child: Container(
+                width: 400,
+                height: 400,
+                decoration: BoxDecoration(
+                  color: AppTheme.primaryGold.withOpacity(0.03),
+                  shape: BoxShape.circle,
+                  backgroundBlendMode: BlendMode.plus,
+                ),
               ),
-            ).transform(Matrix4.translationValues(-100, 100, 0)),
+            ),
           ),
           
           SafeArea(
@@ -144,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'PREMIUM CLUB MANAGEMENT',
+                        'GESTIÓN DE CLUB PREMIUM',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.lexend(
                           fontSize: 12,
@@ -157,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       
                       // Login Form
                       Text(
-                        'EMAIL ADDRESS',
+                        'CORREO ELECTRÓNICO',
                         style: GoogleFonts.lexend(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -181,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'PASSWORD',
+                            'CONTRASEÑA',
                             style: GoogleFonts.lexend(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
@@ -220,7 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             // Forgot Password logic
                           },
                           child: Text(
-                            'Forgot Password?',
+                            '¿Contraseña olvidada?',
                             style: GoogleFonts.lexend(
                               color: AppTheme.primaryGold,
                               fontSize: 12,
@@ -243,7 +268,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           : Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text('LOGIN TO DASHBOARD'),
+                                const Text('INICIAR SESIÓN'),
                                 const SizedBox(width: 8),
                                 Icon(Icons.arrow_forward, size: 18),
                               ],
@@ -258,7 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: Text(
-                              'OR CONTINUE WITH',
+                              'O CONTINUAR CON',
                               style: GoogleFonts.lexend(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w600,
@@ -276,7 +301,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Expanded(
                             child: OutlinedButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                setState(() => _isLoading = true);
+                                try {
+                                  final credential = await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider());
+                                  if (credential.user != null && mounted) {
+                                    await _checkRoleAndNavigate(credential.user!);
+                                  } 
+                                } catch (e) {
+                                  if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+                                } finally {
+                                  if (mounted) setState(() => _isLoading = false);
+                                }
+                              },
                               style: OutlinedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(vertical: 12),
                                 side: BorderSide(color: Colors.grey[800]!),
@@ -297,7 +334,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(width: 16),
                           Expanded(
                             child: OutlinedButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                setState(() => _isLoading = true);
+                                try {
+                                  final credential = await FirebaseAuth.instance.signInWithPopup(OAuthProvider('apple.com'));
+                                  if (credential.user != null && mounted) {
+                                    await _checkRoleAndNavigate(credential.user!);
+                                  }
+                                } catch (e) {
+                                  if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+                                } finally {
+                                  if (mounted) setState(() => _isLoading = false);
+                                }
+                              },
                               style: OutlinedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(vertical: 12),
                                 side: BorderSide(color: Colors.grey[800]!),
@@ -326,9 +375,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             text: TextSpan(
                               style: GoogleFonts.lexend(fontSize: 14, color: Colors.grey[400]),
                               children: [
-                                const TextSpan(text: 'New to the club? '),
+                                const TextSpan(text: '¿Nuevo en el club? '),
                                 TextSpan(
-                                  text: 'Join Now',
+                                  text: 'Únete ahora',
                                   style: TextStyle(
                                     color: AppTheme.primaryGold,
                                     fontWeight: FontWeight.bold,

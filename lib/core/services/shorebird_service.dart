@@ -2,18 +2,19 @@ import 'package:shorebird_code_push/shorebird_code_push.dart';
 import 'package:flutter/foundation.dart';
 
 class ShorebirdService {
-  final ShorebirdCodePush _shorebirdCodePush = ShorebirdCodePush();
+  final ShorebirdUpdater _updater = ShorebirdUpdater();
 
   Future<void> checkForUpdates() async {
     // Shorebird only works on mobile (Android/iOS)
     if (kIsWeb) return;
 
     try {
-      // Check if the current patch is available
-      final isUpdateAvailable = await _shorebirdCodePush.isNewPatchAvailableForDownload();
+      // Check for updates
+      final status = await _updater.checkForUpdate();
 
-      if (isUpdateAvailable) {
-        await _shorebirdCodePush.downloadUpdateIfAvailable();
+      if (status == UpdateStatus.outdated) {
+        // Download and install the update
+        await _updater.update();
       }
     } catch (e) {
       debugPrint('Error checking for Shorebird updates: $e');
@@ -22,6 +23,11 @@ class ShorebirdService {
 
   Future<int?> getCurrentPatchNumber() async {
     if (kIsWeb) return null;
-    return await _shorebirdCodePush.currentPatchNumber();
+    try {
+        final patch = await _updater.readCurrentPatch();
+        return patch?.number;
+    } catch (_) {
+        return null;
+    }
   }
 }
